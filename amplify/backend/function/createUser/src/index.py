@@ -3,20 +3,21 @@ import os
 import uuid
 
 import boto3
-
-from boto3.dynamodb.conditions import Key, Attr
+from boto3.dynamodb.conditions import Key
+from botocore.exceptions import ClientError
 
 dbb = boto3.resource('dynamodb')
 
 def handler(event, context):
   response = {}
+
   try:
     httpMethod = event.get('httpMethod')
     if not httpMethod or httpMethod != 'POST':
       raise ValueError('Wrong Rest Method')
 
-    # body = json.loads(event.get('body'))
-    body = event.get('body')
+    body = json.loads(event.get('body'))
+    # body = event.get('body')
 
     tableName = os.environ['STORAGE_USERS_NAME']
     table = dbb.Table(tableName)
@@ -24,12 +25,11 @@ def handler(event, context):
     response['body'] = json.dumps(check_user(body=body, table=table))
     response['statusCode'] = 200
 
-  except Exception as err:
+  except (Exception, ClientError) as err:
     response['statusCode'] = 400
     response['body'] = { 'error': str(err) }
   
   return response
-    
 
 def check_user(body, table):
   inputs = ['email', 'firstname', 'lastname', 'age']
@@ -44,8 +44,6 @@ def check_user(body, table):
     ProjectionExpression="id, firstname"
   )
 
-  print(item)
-
   if len(item['Items']) <= 0:
 
     body['id'] = str(uuid.uuid4())
@@ -55,6 +53,3 @@ def check_user(body, table):
     return { 'user_id': body['id'] }
   else:
     return { 'user_id': item['Items'][0]['id'] }
-
-
-

@@ -18,9 +18,12 @@
       "function": {
         "createUser": {
           "deploymentBucketName": "amplify-awsproject-dev-91526-deployment",
-          "s3Key": "amplify-builds/createUser-7a67362f6f56424b7764-build.zip"
+          "s3Key": "amplify-builds/createUser-706a745933526d326f35-build.zip"
         },
-        "getUser": {}
+        "getUser": {
+          "deploymentBucketName": "amplify-awsproject-dev-91526-deployment",
+          "s3Key": "amplify-builds/getUser-636557686b6862627371-build.zip"
+        }
       },
       "api": {
         "users": {}
