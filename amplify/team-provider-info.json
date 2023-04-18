@@ -13,7 +13,8 @@
     },
     "categories": {
       "storage": {
-        "users": {}
+        "users": {},
+        "awsprojectbucket": {}
       },
       "function": {
         "createUser": {
@@ -23,10 +24,17 @@
         "getUser": {
           "deploymentBucketName": "amplify-awsproject-dev-91526-deployment",
           "s3Key": "amplify-builds/getUser-61706575766a56597237-build.zip"
+        },
+        "getUrl": {
+          "deploymentBucketName": "amplify-awsproject-dev-91526-deployment",
+          "s3Key": "amplify-builds/getUrl-504c7142705456657466-build.zip"
         }
       },
       "api": {
         "users": {}
+      },
+      "auth": {
+        "awsprojectec3943cb": {}
       }
     }
   }

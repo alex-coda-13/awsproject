@@ -17,10 +17,46 @@
           ],
           "category": "function",
           "resourceName": "getUser"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "getUrl"
         }
       ],
       "providerPlugin": "awscloudformation",
       "service": "API Gateway"
+    }
+  },
+  "auth": {
+    "awsprojectec3943cb": {
+      "customAuth": false,
+      "dependsOn": [],
+      "frontendAuthConfig": {
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyCharacters": [],
+          "passwordPolicyMinLength": 8
+        },
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "socialProviders": [],
+        "usernameAttributes": [
+          "EMAIL"
+        ],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito"
     }
   },
   "function": {
@@ -35,6 +71,29 @@
           ],
           "category": "storage",
           "resourceName": "users"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "getUrl": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ],
+          "category": "storage",
+          "resourceName": "users"
+        },
+        {
+          "attributes": [
+            "BucketName"
+          ],
+          "category": "storage",
+          "resourceName": "awsprojectbucket"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -74,6 +133,22 @@
         }
       ]
     },
+    "AMPLIFY_function_getUrl_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "getUrl"
+        }
+      ]
+    },
+    "AMPLIFY_function_getUrl_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "getUrl"
+        }
+      ]
+    },
     "AMPLIFY_function_getUser_deploymentBucketName": {
       "usedBy": [
         {
@@ -92,6 +167,11 @@
     }
   },
   "storage": {
+    "awsprojectbucket": {
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "S3"
+    },
     "users": {
       "providerPlugin": "awscloudformation",
       "service": "DynamoDB"

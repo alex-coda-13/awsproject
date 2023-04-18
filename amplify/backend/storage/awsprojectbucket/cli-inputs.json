@@ -1,0 +1,14 @@
+{
+  "resourceName": "awsprojectbucket",
+  "policyUUID": "58a6ace2",
+  "bucketName": "awsprojectbucket",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}

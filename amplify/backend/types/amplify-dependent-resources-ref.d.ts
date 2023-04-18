@@ -6,8 +6,26 @@ export type AmplifyDependentResourcesAttributes = {
       "RootUrl": "string"
     }
   },
+  "auth": {
+    "awsprojectec3943cb": {
+      "AppClientID": "string",
+      "AppClientIDWeb": "string",
+      "IdentityPoolId": "string",
+      "IdentityPoolName": "string",
+      "UserPoolArn": "string",
+      "UserPoolId": "string",
+      "UserPoolName": "string"
+    }
+  },
   "function": {
     "createUser": {
+      "Arn": "string",
+      "LambdaExecutionRole": "string",
+      "LambdaExecutionRoleArn": "string",
+      "Name": "string",
+      "Region": "string"
+    },
+    "getUrl": {
       "Arn": "string",
       "LambdaExecutionRole": "string",
       "LambdaExecutionRoleArn": "string",
@@ -23,6 +41,10 @@ export type AmplifyDependentResourcesAttributes = {
     }
   },
   "storage": {
+    "awsprojectbucket": {
+      "BucketName": "string",
+      "Region": "string"
+    },
     "users": {
       "Arn": "string",
       "Name": "string",
