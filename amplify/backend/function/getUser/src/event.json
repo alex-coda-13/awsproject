@@ -1,6 +1,4 @@
-{ 
+{   
     "httpMethod": "GET",
-    "body": {
-        "id": "285b8430-b2db-4d34-b3f8-38972083da88"
-    } 
+    "queryStringParameters": { "id": "e9d96e8f-ebd4-4cc3-a4da-f6be590c076c" }
 }

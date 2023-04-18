@@ -5,6 +5,7 @@ import boto3
 from botocore.exceptions import ClientError
 
 dbb = boto3.resource('dynamodb')
+sm = boto3.client('secretsmanager')
 
 def handler(event, context):
   response = {}
@@ -15,10 +16,12 @@ def handler(event, context):
       raise ValueError('Wrong Rest Method')
   
     params = event.get('queryStringParameters') or {}
-    user_id = params.get('id')
+    api_key = params.get('id')
 
-    if not user_id:
-      raise ValueError('Missing user id')
+    if not api_key:
+      raise ValueError('Missing api_key')
+    
+    user_id = get_secret('api_key_awsproject', api_key)
 
     tableName = os.environ['STORAGE_USERS_NAME']
     table = dbb.Table(tableName)
@@ -40,3 +43,11 @@ def get_user(user_id, table):
   )
 
   return { 'user': user.get('Item') }
+
+
+def get_secret(secretName, apikey):
+  secret = sm.get_secret_value(
+    SecretId=secretName
+  )
+
+  return json.loads(secret['SecretString'])[apikey]
