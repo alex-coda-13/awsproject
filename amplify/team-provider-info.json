@@ -22,7 +22,7 @@
         },
         "getUser": {
           "deploymentBucketName": "amplify-awsproject-dev-91526-deployment",
-          "s3Key": "amplify-builds/getUser-636557686b6862627371-build.zip"
+          "s3Key": "amplify-builds/getUser-61706575766a56597237-build.zip"
         }
       },
       "api": {
