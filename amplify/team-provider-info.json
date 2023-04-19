@@ -14,7 +14,8 @@
     "categories": {
       "storage": {
         "users": {},
-        "awsprojectbucket": {}
+        "awsprojectbucket": {},
+        "data": {}
       },
       "function": {
         "createUser": {
@@ -23,11 +24,23 @@
         },
         "getUser": {
           "deploymentBucketName": "amplify-awsproject-dev-91526-deployment",
-          "s3Key": "amplify-builds/getUser-61706575766a56597237-build.zip"
+          "s3Key": "amplify-builds/getUser-42584a42614c61736646-build.zip"
         },
         "getUrl": {
           "deploymentBucketName": "amplify-awsproject-dev-91526-deployment",
           "s3Key": "amplify-builds/getUrl-504c7142705456657466-build.zip"
+        },
+        "prepareData": {
+          "deploymentBucketName": "amplify-awsproject-dev-91526-deployment",
+          "s3Key": "amplify-builds/prepareData-42304f4d41656f374258-build.zip"
+        },
+        "storeData": {
+          "deploymentBucketName": "amplify-awsproject-dev-91526-deployment",
+          "s3Key": "amplify-builds/storeData-63673874583943426a39-build.zip"
+        },
+        "agregData": {
+          "deploymentBucketName": "amplify-awsproject-dev-91526-deployment",
+          "s3Key": "amplify-builds/agregData-492f4a73386132706631-build.zip"
         }
       },
       "api": {

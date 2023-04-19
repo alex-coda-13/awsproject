@@ -60,6 +60,11 @@
     }
   },
   "function": {
+    "agregData": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
     "createUser": {
       "build": true,
       "dependsOn": [
@@ -114,9 +119,57 @@
       ],
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
+    },
+    "prepareData": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ],
+          "category": "storage",
+          "resourceName": "data"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "storeData": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ],
+          "category": "storage",
+          "resourceName": "data"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
     }
   },
   "parameters": {
+    "AMPLIFY_function_agregData_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "agregData"
+        }
+      ]
+    },
+    "AMPLIFY_function_agregData_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "agregData"
+        }
+      ]
+    },
     "AMPLIFY_function_createUser_deploymentBucketName": {
       "usedBy": [
         {
@@ -164,6 +217,38 @@
           "resourceName": "getUser"
         }
       ]
+    },
+    "AMPLIFY_function_prepareData_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "prepareData"
+        }
+      ]
+    },
+    "AMPLIFY_function_prepareData_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "prepareData"
+        }
+      ]
+    },
+    "AMPLIFY_function_storeData_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "storeData"
+        }
+      ]
+    },
+    "AMPLIFY_function_storeData_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "storeData"
+        }
+      ]
     }
   },
   "storage": {
@@ -171,6 +256,10 @@
       "dependsOn": [],
       "providerPlugin": "awscloudformation",
       "service": "S3"
+    },
+    "data": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
     },
     "users": {
       "providerPlugin": "awscloudformation",
